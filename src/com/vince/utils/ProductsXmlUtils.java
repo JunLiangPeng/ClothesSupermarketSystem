@@ -22,7 +22,6 @@ public class ProductsXmlUtils {
         }catch (IOException e){
             e.printStackTrace();
         }
-
         return products;
     }
 
