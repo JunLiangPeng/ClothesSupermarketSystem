@@ -3,7 +3,7 @@ package com.vince.bean;
 /**
  * 订单
  */
-public class OrderItem {
+public class  OrderItem {
     private int itemId;
     private Clothes clothes;//商品
     private int shoppingNum;
