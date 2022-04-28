@@ -21,4 +21,8 @@ public class ClothesServiceImpl implements ClothesService {
     public Clothes findClothesById(String clothesId) throws BusinessException {
         return clothesIO.findClothesById(clothesId);
     }
+
+    public void update() throws BusinessException{
+        clothesIO.update();
+    }
 }

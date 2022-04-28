@@ -25,5 +25,9 @@ public class ClothesIO {
         return list;
     }
 
+    //更新xml文件
+    public void update() throws BusinessException{
+        ProductsXmlUtils.writeProductToXml(list);
+    }
 
 }

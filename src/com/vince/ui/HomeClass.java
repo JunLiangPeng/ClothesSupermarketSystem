@@ -72,13 +72,16 @@ public class HomeClass extends Base{
             String id = input.nextLine();
             println(getString("product.input.shoppingNum"));
             String shoppingNum  = input.nextLine();
-            OrderItem orderItem = new OrderItem();
             Clothes clothes = clothesService.findClothesById(id);
             int num = Integer.parseInt(shoppingNum);
             if(num>clothes.getNum()){
                 throw new BusinessException("product.num.error");
             }
+            OrderItem orderItem = new OrderItem();
             //一条订单明细
+
+            clothes.setNum(clothes.getNum()-num);//减库存
+
             orderItem.setClothes(clothes);
             orderItem.setShoppingNum(num);
 
@@ -98,7 +101,7 @@ public class HomeClass extends Base{
                     flag = false;
                     break;
                 default:
-                    flag = true;
+                    flag = false;
                     break;
             }
 
@@ -108,6 +111,8 @@ public class HomeClass extends Base{
         order.setSum(sum);
         order.setOrderId(orderService.list().size()+1);
         orderService.buyProduct(order);
+        clothesService.update();
+        showProducts();
     }
 
     //根据id查找订单
