@@ -46,7 +46,6 @@ public class HomeClass extends Base{
                     } catch (BusinessException e){
                         println(e.getMessage());
                     }
-
                     break;
                 case "0"://0 退出
                     flag = false;
