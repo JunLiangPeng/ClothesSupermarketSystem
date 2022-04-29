@@ -65,11 +65,9 @@ public class HomeClass extends Base{
                 default:
                     println("input.error");
                     break;
-
             }
         }
     }
-
     //购买商品
     //购买
     private void buyProducts() throws BusinessException {
