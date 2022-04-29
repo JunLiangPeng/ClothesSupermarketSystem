@@ -2,10 +2,11 @@ package com.vince.bean;
 
 import com.vince.utils.OrderStatusType;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Order {
+public class Order implements Serializable {
     private int orderId;
     private List<OrderItem> orderItemList = new ArrayList<>();
     private String createData;

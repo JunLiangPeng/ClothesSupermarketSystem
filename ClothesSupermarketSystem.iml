@@ -10,6 +10,6 @@
     <orderEntry type="library" name="junit" level="project" />
     <orderEntry type="library" name="thoughtworks.xstream" level="project" />
     <orderEntry type="library" name="xpp3.xpp3_min" level="project" />
-    <orderEntry type="library" name="com.spock.util.table" level="project" />
+    <orderEntry type="library" name="cl.symbiose.dom4j.to.json" level="project" />
   </component>
 </module>

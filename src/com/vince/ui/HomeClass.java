@@ -6,24 +6,33 @@ import com.vince.bean.Order;
 import com.vince.bean.OrderItem;
 import com.vince.service.ClothesService;
 import com.vince.service.OrderService;
-import com.vince.service.impl.ClothesServiceImpl;
-import com.vince.service.impl.OrderServiceImpl;
+
 import com.vince.utils.BusinessException;
 import com.vince.utils.ConsoleTable;
 import com.vince.utils.DateUtils;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class HomeClass extends Base{
 
-    private OrderService orderService = new OrderServiceImpl();
-    private ClothesService clothesService = new ClothesServiceImpl();
+
+    private OrderService orderService;
+    private ClothesService clothesService;
+    public HomeClass(){
+        orderService = (OrderService)beanFactory.getBean("orderService");
+        clothesService = (ClothesService)beanFactory.getBean("clothesService");
+    }
+
 
     public void show(){
         showProducts();
         println("welcome:"+currentuser.getUsername());
+        menu();
+
+    }
+
+    private void menu() {
         boolean flag = true;
         while(flag){
             println(getString("home.function"));
@@ -32,7 +41,7 @@ public class HomeClass extends Base{
 
             switch(select){
                 case "1"://1、查询全部订单
-                    findList();
+                    findOrderList();
                     flag = false;
                     break;
                 case "2":// 2、查找订单
@@ -47,6 +56,9 @@ public class HomeClass extends Base{
                         println(e.getMessage());
                     }
 
+                    break;
+                case "4":
+                    show();
                     break;
                 case "0"://0 退出
                     flag = false;
@@ -112,27 +124,63 @@ public class HomeClass extends Base{
         order.setOrderId(orderService.list().size()+1);
         orderService.buyProduct(order);
         clothesService.update();
-        showProducts();
+        show();
     }
 
     //根据id查找订单
     private void findOrderById() {
+        println(getString("product.order.input.oid"));
+        String oid = input.nextLine();
+        Order order = orderService.findById(oid);
+        if(order == null){
+            showOrder(order);
+        } else {
+            println(getString("product.order.error"));
+        }
+        menu();
     }
 
     //查询全部订单
-    private void findList() {
+    private void findOrderList() {
+        List<Order> list = orderService.list();
+        for(Order o:list){
+            showOrder(o);
+        }
+         menu();
+    }
 
+    private void showOrder(Order o) {
+
+        println(getString("product.order.oid"));
+        println("\t"+getString("product.order.createDate")+o.getCreateData());
+        println("\t"+getString("product.order.sum")+o.getSum());
+        ConsoleTable t = new ConsoleTable(9, true);
+        t.appendRow();
+        t.appendColum("itemId")
+                .appendColum("brand")
+                .appendColum("style")
+                .appendColum("color")
+                .appendColum("size")
+                .appendColum("price")
+                .appendColum("description")
+                .appendColum("shoppingNum")
+                .appendColum("sum");
+        List<Clothes> clothes = clothesService.list();
+
+        for(Clothes c:clothes){
+            t.appendRow();
+            t.appendColum(c.getId()).appendColum(c.getBrand()).appendColum(c.getStyle()).appendColum(c.getColor()).appendColum(c.getSize()).appendColum(c.getNum()).appendColum(c.getPrice()).appendColum(c.getDescription());
+        }
+        System.out.println(t.toString());
     }
 
     private void showProducts(){
-
 
         ConsoleTable t = new ConsoleTable(8, true);
         t.appendRow();
         t.appendColum("id").appendColum("brand").appendColum("style").appendColum("color").appendColum("size").appendColum("num").appendColum("price").appendColum("description");
 
         List<Clothes> clothes = clothesService.list();
-        // System.out.println(t.toString());
 
         for(Clothes c:clothes){
             t.appendRow();

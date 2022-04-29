@@ -1,30 +1,29 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<list>
-    <clothes id="A0001">
-        <brand>VEROMODA</brand>
-        <style>连衣裙</style>
-        <color>白色</color>
-        <size>S</size>
-        <num>4</num>
-        <price>111.0</price>
-        <description>夏季五分袖</description>
-    </clothes>
-    <clothes id="A0002">
-        <brand>优衣库</brand>
-        <style>连衣裙2</style>
-        <color>黑色</color>
-        <size>S</size>
-        <num>4</num>
-        <price>222.0</price>
-        <description>夏季五分袖</description>
-    </clothes>
-    <clothes id="A0003">
-        <brand>HM</brand>
-        <style>衣服3</style>
-        <color>蓝色</color>
-        <size>S</size>
-        <num>14</num>
-        <price>333.0</price>
-        <description>夏季五分袖</description>
-    </clothes>
+<?xml version="1.0" encoding="utf-8" ?><list>
+  <clothes id="A0001">
+    <brand>VEROMODA</brand>
+    <style>连衣裙</style>
+    <color>白色</color>
+    <size>S</size>
+    <num>4</num>
+    <price>111.0</price>
+    <description>夏季五分袖</description>
+  </clothes>
+  <clothes id="A0002">
+    <brand>优衣库</brand>
+    <style>连衣裙2</style>
+    <color>黑色</color>
+    <size>S</size>
+    <num>4</num>
+    <price>222.0</price>
+    <description>夏季五分袖</description>
+  </clothes>
+  <clothes id="A0003">
+    <brand>HM</brand>
+    <style>衣服3</style>
+    <color>蓝色</color>
+    <size>S</size>
+    <num>7</num>
+    <price>333.0</price>
+    <description>夏季五分袖</description>
+  </clothes>
 </list>

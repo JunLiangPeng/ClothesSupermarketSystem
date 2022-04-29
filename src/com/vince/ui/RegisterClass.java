@@ -6,13 +6,20 @@ import com.vince.service.impl.UserServiceImpl;
 import com.vince.utils.BusinessException;
 
 public class RegisterClass extends Base{
+
+    private UserService userServiceImpl;
+
+    public RegisterClass (){
+        userServiceImpl = (UserService)beanFactory.getBean("userService");
+    }
+
     public void register() throws BusinessException {
         println(getString("input.username"));
         String username = input.nextLine();
         print(getString("input.password"));
         String password = input.nextLine();
         User u = new User(username,password);
-        UserService userServiceImpl = new UserServiceImpl();
+        // UserService userServiceImpl = new UserServiceImpl();
         userServiceImpl.register(u);
     }
 }

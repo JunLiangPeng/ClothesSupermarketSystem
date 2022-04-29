@@ -1,6 +1,7 @@
 package com.vince.utils;
 
 import com.vince.bean.Order;
+import org.junit.Test;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -14,9 +15,11 @@ public class OrderIO {
 
     public void add(Order order) throws BusinessException{
         orders.add(order);
+        writeOrders();
     }
 
     public List<Order> list() throws BusinessException{
+        readOrders();
         return orders;
     }
 

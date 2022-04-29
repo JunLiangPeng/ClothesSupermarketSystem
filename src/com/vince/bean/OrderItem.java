@@ -1,9 +1,11 @@
 package com.vince.bean;
 
+import java.io.Serializable;
+
 /**
  * 订单
  */
-public class  OrderItem {
+public class  OrderItem implements Serializable {
     private int itemId;
     private Clothes clothes;//商品
     private int shoppingNum;

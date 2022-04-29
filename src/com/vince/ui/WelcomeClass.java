@@ -22,10 +22,10 @@ public class WelcomeClass extends Base {
                     println("登录");
                     try {
                         new LoginClass().login();
+                        flag = false;
                     } catch (BusinessException e){
                         throw new BusinessException("login.error");
                     }
-
                     break;
                 case "2":
                     try {
